@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-  <app-navbar></app-navbar>
-  <app-hero></app-hero>
-  <h1>Pytahgore Académie</h1>
-  <app-footer></app-footer>`,
+  templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {

@@ -17,13 +17,11 @@ export class ApiComponent implements OnInit  {
   }
 
   private fetchData(){
-    this.http.get<Discipline[]>("http://localhost:8080")
+    this.http.get<Discipline[]>("http://localhost:8080/getAllDiscipline")
     .subscribe((res)=>{
       console.log(res)
       this.allDiscipline = res;
     })
   }
-
-  
 
 }

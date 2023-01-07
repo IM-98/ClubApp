@@ -1,0 +1,33 @@
+<div class="flex flex-col items-center mt-8">
+    <div class="text-3xl font-bold">Planning des cours</div>
+    <div class="flex mt-4">
+      <select class="form-select w-48 mr-4" [(ngModel)]="dayFilter" (change)="filterCourses()">
+        <option value="">Tous les jours</option>
+        <option *ngFor="let day of days" [value]="day">{{day}}</option>
+      </select>
+      <input class="form-input w-48" type="text" placeholder="Type de cours" [(ngModel)]="typeFilter" (change)="filterCourses()">
+    </div>
+    <table class="w-full mt-4 text-center border-collapse">
+      <thead class="text-lg font-bold">
+        <tr class="bg-gray-200">
+          <th class="px-4 py-2">Jour</th>
+          <th class="px-4 py-2">Heure de début</th>
+          <th class="px-4 py-2">Heure de fin</th>
+          <th class="px-4 py-2">Type de cours</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of filteredCourses" class="border-b border-gray-300">
+        <td class="px-4 py-2">{{course.day}}</td>
+        <td class="px-4 py-2">{{course.startTime}}</td>
+        <td class="px-4 py-2">{{course.endTime}}</td>
+        <td class="px-4 py-2">{{course.type}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+  

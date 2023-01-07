@@ -1,7 +1,6 @@
-export class Discipline{
+export interface Discipline{
     discipline: string
     price: number
     schedule: string
-    id?: string
-
+    id?: number
 }

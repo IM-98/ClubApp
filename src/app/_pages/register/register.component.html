@@ -1,9 +1,7 @@
-<div class="flex items-center justify-center h-screen">
-
-    
+<h1 class="flex items-center justify-center font-bold text-3xl my-5">S'inscrire</h1>
+<div class="flex my-10 justify-center">
 
     <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
-        <h1 class="m-10 font-bold flex items-center justify-center">Register</h1>
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
           <div class="grid grid-cols-2 gap-4">
             <div class="form-group mb-6">
@@ -115,7 +113,7 @@
             <input type="checkbox"
               class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-red-600 checked:border-red-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
               id="exampleCheck25" checked>
-            <label class="form-check-label inline-block text-gray-800" for="newsletter">Subscribe to our newsletter</label>
+            <label class="form-check-label inline-block text-gray-800" for="newsletter">J'accepte les conditions générales</label>
           </div>
           <button type="submit" class="
             w-full
@@ -134,7 +132,7 @@
             active:bg-red-800 active:shadow-lg
             transition
             duration-150
-            ease-in-out">Sign up</button>
+            ease-in-out">S'inscrire</button>
         </form>
       </div>
 

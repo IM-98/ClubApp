@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Marker, Position } from '../models/Position';
+import { Marker, Position } from '../../models/Position';
 
 
 @Component({

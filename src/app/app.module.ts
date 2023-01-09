@@ -6,15 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeroComponent } from './components/hero/hero.component';
-import { ApiComponent } from './components/api/api.component';
-import {LoginComponent} from "./components/login/login.component"
+import {LoginComponent} from "./_pages/login/login.component"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './_pages/home/home.component';
-import { RegisterComponent } from './components/register/register.component';
-import { ContactComponent } from './contact/contact.component';
+import { RegisterComponent } from './_pages/register/register.component';
+import { ContactComponent } from './_pages/contact/contact.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { PlanningComponent } from './planning/planning.component';
-import { DisciplinesComponent } from './disciplines/disciplines.component'
+import { PlanningComponent } from './_pages/planning/planning.component';
+import { DisciplinesComponent } from './_pages/disciplines/disciplines.component'
 import { UserLoginService } from './services/user-login.service';
 
 
@@ -24,7 +23,6 @@ import { UserLoginService } from './services/user-login.service';
     NavbarComponent,
     FooterComponent,
     HeroComponent,
-    ApiComponent,
     LoginComponent,
     HomeComponent,
     RegisterComponent,

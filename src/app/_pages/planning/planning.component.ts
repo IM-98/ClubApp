@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 })
 export class PlanningComponent {
 
+  // this data will come from API
   courses = [
     { day: 'Lundi', startTime: '18h00', endTime: '19h30', type: 'Kickboxing' },
     { day: 'Mardi', startTime: '18h00', endTime: '19h30', type: 'MMA' },

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {User} from "../../models/user";
+import {UserLoginService} from "../../services/user-login.service";
 
 @Component({
   selector: 'app-register',
@@ -7,18 +9,17 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 })
 export class RegisterComponent implements OnInit {
 
+  constructor(private userRegister: UserLoginService, private formBuilder: FormBuilder) {
+  }
+
   onSubmit() {
     console.log(this.signupForm.value)
-    
-    console.log(this.password?.value)
-    
+    this.userRegister.register(this.signupForm)
   }
   
   signupForm!: FormGroup
 
   signupControl = new FormControl('', {updateOn: 'blur'})
-
-  constructor(private formBuilder: FormBuilder) { }
   get email() {
     return this.signupForm.get('email');
   }
@@ -30,8 +31,6 @@ export class RegisterComponent implements OnInit {
   get confirmPassword() {
     return this.signupForm.get('confirmPassword');
   }
-
-
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       firstname: ['', [
@@ -52,7 +51,6 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$.@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}")
       ]],
-      phones: this.formBuilder.array([]),
       terms: ['', [
         Validators.requiredTrue
       ]]

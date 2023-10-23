@@ -14,16 +14,13 @@ export class LoginComponent implements OnInit {
   token!: string
   signinForm!: FormGroup
 
+  constructor(private formbuilder: FormBuilder, private userLogin: UserLoginService) { }
+
   signinControl = new FormControl('', { updateOn: 'blur' })
 
   onSubmit(){
-    this.userLogin.Login(this.signinForm)
+    this.userLogin.login(this.signinForm)
   }
-
-  
-
-
-  constructor(private formbuilder: FormBuilder, private userLogin: UserLoginService) { }
   get email() {
     return this.signinForm.get('email');
   }
@@ -31,10 +28,6 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.signinForm.get('password');
   }
-
-
-
-
   ngOnInit(): void {
 
     this.signinForm = this.formbuilder.group({

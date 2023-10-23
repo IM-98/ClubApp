@@ -28,7 +28,7 @@ export class UserLoginService {
 
   register(registerForm: FormGroup) {
       return this.http.post(this.ApiRegisterUrl, registerForm.value).subscribe(
-          res => this.succesRegister = true
+          () => this.succesRegister = true
       )
   }
 

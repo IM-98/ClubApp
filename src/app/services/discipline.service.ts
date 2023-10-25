@@ -13,6 +13,7 @@ export class DisciplineService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
+    //TODO : utiliser interceptor pour token dans header
     getCourses() : Observable<Discipline[]> {
         const token = localStorage.getItem("token");
             const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });

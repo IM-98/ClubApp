@@ -1,21 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Discipline} from "../../models/discipline";
+import {DisciplineService} from "../../services/discipline.service";
 
 @Component({
   selector: 'app-planning',
   templateUrl: "planning.component.html"
 })
-export class PlanningComponent {
+export class PlanningComponent implements OnInit{
+
+  constructor(private disciplineService: DisciplineService) {
+  }
 
   // this data will come from API
-  courses = [
-    { day: 'Lundi', startTime: '18h00', endTime: '19h30', type: 'Kickboxing' },
-    { day: 'Mardi', startTime: '18h00', endTime: '19h30', type: 'MMA' },
-    { day: 'Jeudi', startTime: '18h00', endTime: '19h30', type: 'Boxe thaïlandaise' },
-    { day: 'Vendredi', startTime: '18h00', endTime: '19h30', type: 'Jiu-jitsu brésilien' },
-    { day: 'Samedi', startTime: '09h00', endTime: '10h30', type: 'Krav Maga' },
-  ];
+  courses: Discipline[] = [];
 
-  filteredCourses = this.courses;
+  filteredCourses: Discipline[] = [];
   dayFilter = '';
   typeFilter = '';
   days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
@@ -23,8 +22,15 @@ export class PlanningComponent {
   filterCourses() {
     this.filteredCourses = this.courses.filter(
       (course) =>
-        (this.dayFilter == '' || course.day == this.dayFilter) &&
-        (this.typeFilter == '' || course.type.includes(this.typeFilter))
+        (this.dayFilter == '' || course.day.toLowerCase() == this.dayFilter.toLowerCase()) &&
+        (this.typeFilter == '' || course.name.includes(this.typeFilter))
     );
+  }
+
+  ngOnInit(): void {
+    this.disciplineService.getCourses().subscribe( data =>{
+      this.courses = data
+      this.filteredCourses = data
+    })
   }
 }

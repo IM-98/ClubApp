@@ -1,6 +1,8 @@
-export interface Discipline{
-    discipline: string
+export interface Discipline {
+    name: string
     price: number
-    schedule: string
+    startTime : string
+    endTime : string
+    day: string
     id?: number
 }

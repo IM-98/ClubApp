@@ -8,7 +8,7 @@ import {Subscription} from "rxjs";
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  isLogged: boolean = false
+  isLogged: boolean;
   private authSubscription: Subscription;
   showLogin: boolean = true; // Variable pour suivre l'état de la page
 

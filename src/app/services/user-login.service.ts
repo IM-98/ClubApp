@@ -17,6 +17,14 @@ export class UserLoginService {
     succesRegister: boolean = false
 
     constructor(private http: HttpClient, private router: Router) {
+        this.checkTokenOnLoad();
+    }
+
+    private checkTokenOnLoad() {
+        const token = localStorage.getItem('token');
+        if (token) {
+            this.isLoggedInSubject.next(true);
+        }
     }
 
     login(signinForm: FormGroup) {

@@ -3,9 +3,9 @@
 
     <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="form-group mb-6">
-              <input type="text" class="form-control
+            <div class="grid grid-cols-2 gap-4">
+                <div class="form-group mb-6">
+                    <input type="text" class="form-control
                 block
                 w-full
                 px-3
@@ -20,10 +20,10 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="firstname"
-                aria-describedby="firstname" placeholder="First name" formControlName="firstname">
-            </div>
-            <div class="form-group mb-6">
-              <input type="text" class="form-control
+                           aria-describedby="firstname" placeholder="First name" formControlName="firstname">
+                </div>
+                <div class="form-group mb-6">
+                    <input type="text" class="form-control
                 block
                 w-full
                 px-3
@@ -38,11 +38,11 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="lastname"
-                aria-describedby="lastname" placeholder="Last name" formControlName="lastname">
+                           aria-describedby="lastname" placeholder="Last name" formControlName="lastname">
+                </div>
             </div>
-          </div>
-          <div class="form-group mb-6">
-            <input type="email" class="form-control block
+            <div class="form-group mb-6">
+                <input type="email" class="form-control block
               w-full
               px-3
               py-1.5
@@ -56,15 +56,15 @@
               ease-in-out
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="email"
-              placeholder="Email address" formControlName="email">
-      
-              <div class="error" *ngIf="email?.errors && email?.touched">
-                  <span *ngIf="email?.errors!['pattern']">Invalid format</span>
-                  <span *ngIf="email?.value == '' ">mail required</span>
-              </div>
-          </div>
-          <div class="form-group mb-6">
-            <input type="password" class="form-control block
+                       placeholder="Email address" formControlName="email">
+
+                <div class="error" *ngIf="email?.errors && email?.touched">
+                    <span *ngIf="email?.errors!['pattern']">Invalid format</span>
+                    <span *ngIf="email?.value == '' ">mail required</span>
+                </div>
+            </div>
+            <div class="form-group mb-6">
+                <input type="password" class="form-control block
               w-full
               px-3
               py-1.5
@@ -78,16 +78,16 @@
               ease-in-out
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="password"
-              placeholder="Password"
-              formControlName="password">
-              <div class="error" *ngIf="password?.touched && password?.errors">
+                       placeholder="Password"
+                       formControlName="password">
+                <div class="error" *ngIf="password?.touched && password?.errors">
                   <span *ngIf="password?.errors!['pattern']">At least 8 characters, one uppercase, one number and one special
                       character</span>
-                  <span *ngIf="password?.value == '' ">password required</span>
-              </div>
-          </div>
-          <div class="form-group mb-6">
-            <input type="password" class="form-control block
+                    <span *ngIf="password?.value == '' ">password required</span>
+                </div>
+            </div>
+            <div class="form-group mb-6">
+                <input type="password" class="form-control block
               w-full
               px-3
               py-1.5
@@ -101,21 +101,22 @@
               ease-in-out
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="confirmPassword"
-              placeholder="Password" formControlName="confirmPassword">
-      
-              <div class="error" *ngIf="confirmPassword?.touched && confirmPassword?.errors">
+                       placeholder="Password" formControlName="confirmPassword">
+
+                <div class="error" *ngIf="confirmPassword?.touched && confirmPassword?.errors">
                   <span *ngIf="confirmPassword?.errors!['pattern']">Minimum 8 charactères, une majuscule et un caractère
                       spécial</span>
-                  <span *ngIf="confirmPassword?.value == '' ">password required</span>
-              </div>
-          </div>
-          <div class="form-group form-check text-center mb-6">
-            <input type="checkbox"
-              class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-red-600 checked:border-red-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
-              id="exampleCheck25" checked>
-            <label class="form-check-label inline-block text-gray-800" for="newsletter">J'accepte les conditions générales</label>
-          </div>
-          <button type="submit" class="
+                    <span *ngIf="confirmPassword?.value == '' ">password required</span>
+                </div>
+            </div>
+            <div class="form-group form-check text-center mb-6">
+                <input type="checkbox"
+                       class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-red-600 checked:border-red-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+                       id="exampleCheck25" checked>
+                <label class="form-check-label inline-block text-gray-800" for="newsletter">J'accepte les conditions
+                    générales</label>
+            </div>
+            <button type="submit" class="
             w-full
             px-6
             py-2.5
@@ -132,9 +133,15 @@
             active:bg-red-800 active:shadow-lg
             transition
             duration-150
-            ease-in-out">S'inscrire</button>
+            ease-in-out">S'inscrire
+            </button>
+            <p class="text-gray-800 mt-6 text-center">Déjà un compte ?
+                <a (click)="onToggleForm()" class="text-black font-medium hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out cursor-pointer">
+                    Se connecter
+                </a>
+            </p>
         </form>
-      </div>
+    </div>
 
 
 </div>

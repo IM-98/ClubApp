@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private formbuilder: FormBuilder, private userLogin: UserLoginService) { }
 
+  @Output() toggleForm: EventEmitter<void> = new EventEmitter<void>();
+
+
   signinControl = new FormControl('', { updateOn: 'blur' })
 
   onSubmit(){
@@ -40,6 +43,10 @@ export class LoginComponent implements OnInit {
         Validators.pattern("")
       ]]
     })
+  }
+
+  onToggleForm() {
+    this.toggleForm.emit(); // Émet un signal pour basculer entre les formulaires
   }
 
 }

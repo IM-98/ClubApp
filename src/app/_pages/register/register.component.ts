@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {User} from "../../models/user";
 import {UserLoginService} from "../../services/user-login.service";
@@ -11,6 +11,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private userRegister: UserLoginService, private formBuilder: FormBuilder) {
   }
+
+  @Output() toggleForm: EventEmitter<void> = new EventEmitter<void>();
 
   onSubmit() {
     console.log(this.signupForm.value)
@@ -59,5 +61,8 @@ export class RegisterComponent implements OnInit {
     
   }
 
+  onToggleForm() {
+    this.toggleForm.emit(); // Émet un signal pour basculer entre les formulaires
+  }
 
 }

@@ -1,34 +1,43 @@
-import { HttpClient} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
-import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Token } from '../models/token';
+import {Injectable} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Token} from '../models/token';
+import {BehaviorSubject} from "rxjs";
+
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserLoginService {
 
-  authApiUrl: string = "http://localhost:8080/api/auth"
-  isLoggedIn: boolean = false
-  succesRegister: boolean = false
+    authApiUrl: string = "http://localhost:8080/api/auth"
+    private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public isLoggedIn$ = this.isLoggedInSubject.asObservable();
+    succesRegister: boolean = false
 
-  constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private router: Router) {
+    }
 
-  login(signinForm: FormGroup) {
-     return this.http.post<Token>(`${this.authApiUrl}/authenticate`, signinForm.value, ).subscribe(
-      (res) => {
-        localStorage.setItem('token', res.token);
-        this.isLoggedIn = true
-        this.router.navigate(['/'])
-      }
-    )
-  }
+    login(signinForm: FormGroup) {
+        return this.http.post<Token>(`${this.authApiUrl}/authenticate`, signinForm.value,).subscribe(
+            (res) => {
+                localStorage.setItem('token', res.token);
+                this.isLoggedInSubject.next(true); // Émettre le changement d'état de connexion
+            }
+        )
+    }
 
-  register(registerForm: FormGroup) {
-      return this.http.post(`${this.authApiUrl}/register`, registerForm.value).subscribe(
-          () => this.succesRegister = true
-      )
-  }
+    logout() {
+        // Ajoutez ici la logique de déconnexion, comme la suppression du token du localStorage
+        localStorage.removeItem('token');
+        this.isLoggedInSubject.next(false);
+    }
+
+        register(registerForm: FormGroup) {
+        return this.http.post(`${this.authApiUrl}/register`, registerForm.value).subscribe(
+            () => this.succesRegister = true
+        )
+    }
 
 }

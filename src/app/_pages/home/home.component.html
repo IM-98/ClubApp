@@ -1,2 +1,15 @@
 <app-hero></app-hero>
+<div>
+    <div *ngIf="!isLogged">
+        <div *ngIf="showLogin">
+            <app-login (toggleForm)="showRegisterForm()"></app-login>
+        </div>
+        <div *ngIf="!showLogin">
+            <app-register (toggleForm)="showLoginForm()"></app-register>
+        </div>
+    </div>
+    <div *ngIf="isLogged">
+        <app-planning></app-planning>
+    </div>
+</div>
 <app-footer></app-footer>

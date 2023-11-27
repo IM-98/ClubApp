@@ -34,6 +34,21 @@ export class HomeComponent implements OnInit, OnDestroy {
   showRegisterForm() {
     this.showLogin = false;
   }
+  registrationSuccessMessage = '';
+  registrationErrorMessage = '';
 
+  handleRegistrationSuccess(success: boolean) {
+    this.registrationSuccessMessage = success ? 'Inscription réussie!' : '';
+    setTimeout(() => {
+      this.registrationSuccessMessage = '';
+    }, 5000); // Efface le message après 5 secondes (5000 ms)
+  }
+
+  handleRegistrationError(error: boolean) {
+    this.registrationErrorMessage = error ? 'Erreur lors de l\'inscription.' : '';
+    setTimeout(() => {
+      this.registrationErrorMessage = '';
+    }, 5000); // Efface le message après 5 secondes (5000 ms)
+  }
 
 }

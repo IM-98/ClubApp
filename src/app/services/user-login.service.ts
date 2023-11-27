@@ -42,10 +42,8 @@ export class UserLoginService {
         this.isLoggedInSubject.next(false);
     }
 
-        register(registerForm: FormGroup) {
-        return this.http.post(`${this.authApiUrl}/register`, registerForm.value).subscribe(
-            () => this.succesRegister = true
-        )
+    register(registerForm: FormGroup) {
+        return this.http.post(`${this.authApiUrl}/register`, registerForm.value)
     }
 
 }

@@ -13,13 +13,29 @@ export class RegisterComponent implements OnInit {
   }
 
   @Output() toggleForm: EventEmitter<void> = new EventEmitter<void>();
+  @Output() registrationSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() registrationError: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  signupForm!: FormGroup
 
   onSubmit() {
     console.log(this.signupForm.value)
-    this.userRegister.register(this.signupForm)
-  }
+      // Votre logique d'inscription...
+      this.userRegister.register(this.signupForm).subscribe(
+          (res) => {
+            // Succès de l'inscription
+            this.registrationSuccess.emit(true);
+            this.registrationError.emit(false);
+            this.toggleForm.emit(); // Émet un signal pour basculer entre les formulaires
+          },
+          (error) => {
+            // Erreur lors de l'inscription
+            this.registrationSuccess.emit(false);
+            this.registrationError.emit(true);
+          }
+      );
+    }
   
-  signupForm!: FormGroup
 
   signupControl = new FormControl('', {updateOn: 'blur'})
   get email() {

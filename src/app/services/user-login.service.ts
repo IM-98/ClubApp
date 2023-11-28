@@ -14,7 +14,6 @@ export class UserLoginService {
     authApiUrl: string = "http://localhost:8080/api/auth"
     private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public isLoggedIn$ = this.isLoggedInSubject.asObservable();
-    succesRegister: boolean = false
 
     constructor(private http: HttpClient, private router: Router) {
         this.checkTokenOnLoad();

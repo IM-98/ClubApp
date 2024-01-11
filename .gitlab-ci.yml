@@ -1,0 +1,40 @@
+image: alpine-18
+
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  GIT_CLEAN_FLAGS: -ffdx -e dist/
+  S3_BUCKET_NAME: "pythagore-app"
+
+build:
+  stage: build
+  script:
+    - npm install
+    - ng build --prod
+  artifacts:
+    when: always
+    paths:
+      - dist/
+
+test:
+  stage: test
+  script:
+    - npm install
+    - ng test
+
+deploy:
+  stage: deploy
+  needs: ["build"]
+  script:
+    - aws --version
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set region eu-west-3
+    - aws s3 sync dist/ s3://$S3_BUCKET_NAME/
+  dependencies:
+    - build
+  only:
+    - main
